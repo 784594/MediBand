@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediBand Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body data-view="dashboard">
+    <main class="app-shell">
+      <section class="hero">
+        <p class="eyebrow">MediBand</p>
+        <h1>Administrative Command Dashboard</h1>
+        <p class="subtitle">
+          MediBand oversight for live patient routing during
+          Condition X surge operations.
+        </p>
+      </section>
+
+      <section class="stats">
+        <article class="card">
+          <div class="stat-value" id="statTotal">0</div>
+          <p class="stat-label">Patients in System</p>
+        </article>
+        <article class="card">
+          <div class="stat-value" id="statCritical">0</div>
+          <p class="stat-label">Critical Alerts</p>
+        </article>
+        <article class="card">
+          <div class="stat-value" id="statUrgent">0</div>
+          <p class="stat-label">Urgent Cases</p>
+        </article>
+        <article class="card">
+          <div class="stat-value" id="statStable">0</div>
+          <p class="stat-label">Stable Patients</p>
+        </article>
+      </section>
+
+      <section class="panel card">
+        <div class="toolbar">
+          <div>
+            <h2>Live Patient Census</h2>
+            <p class="subtitle">Search by RFID, open a full patient record page, and manually override triage when needed.</p>
+          </div>
+          <input id="searchInput" class="input" type="search" placeholder="Search RFID / Patient ID" aria-label="Search patients">
+        </div>
+
+        <div style="overflow-x:auto;">
+          <table>
+            <thead>
+              <tr>
+                <th>Patient</th>
+                <th>Live BPM</th>
+                <th>Triage Status</th>
+                <th>Manual Override</th>
+              </tr>
+            </thead>
+            <tbody id="patientTableBody">
+              <tr>
+                <td colspan="4">Awaiting Firebase connection...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </main>
+
+    <script src="config.js"></script>
+    <script type="module" src="app.js"></script>
+  </body>
+</html>

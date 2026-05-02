@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>MediBand Field Monitor</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body data-view="handheld">
+    <main class="app-shell">
+      <section id="monitorShell" class="card">
+        <div class="hero" style="margin-bottom:18px;">
+          <p class="eyebrow">Condition X Field Monitor</p>
+          <h1>Rapid Response Queue</h1>
+          <p class="subtitle">
+            Mobile field feed showing only serious and high-priority patients for rapid stabilization.
+          </p>
+        </div>
+
+        <div class="stats" style="margin-bottom:18px;">
+          <article class="card">
+            <div class="stat-value" id="monitorCount">0</div>
+            <p class="stat-label">Flagged Patients</p>
+          </article>
+        </div>
+
+        <section id="monitorList" class="list">
+          <div class="patient-card">
+            <h3>Awaiting Firebase connection...</h3>
+            <p class="subtitle">Critical and urgent cases will appear here in real time. Tap any patient for the full live record.</p>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <script src="config.js"></script>
+    <script type="module" src="app.js"></script>
+  </body>
+</html>

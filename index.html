@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediBand Reception Desktop</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body data-view="reception">
+    <main class="app-shell wide">
+      <section class="toolbar" style="margin-bottom:24px;">
+        <div class="hero" style="margin-bottom:0;">
+          <p class="eyebrow">MediBand</p>
+          <h1>Medical Reception Desktop</h1>
+          <p class="subtitle">
+            Front-desk coordination view inspired by your sample dashboard, tuned for fictional patient intake,
+            queue visibility, and real-time handoff into triage operations.
+          </p>
+        </div>
+        <div class="toolbar-actions">
+          <button id="themeToggle" class="button ghost" type="button">Toggle Light Mode</button>
+        </div>
+      </section>
+
+      <section class="reception-banner">
+        <div>
+          <h2>Reception Queue Control</h2>
+          <p class="subtitle">Track arrivals, open patient records, and jump to the right operational surface.</p>
+        </div>
+        <div class="toolbar-actions">
+          <button id="seedDemoButton" class="button secondary" type="button">Load Demo Patients</button>
+          <button id="randomizeDemoButton" class="button critical" type="button">Randomize Live Vitals</button>
+          <div class="live-pill">Realtime Sync Active</div>
+        </div>
+      </section>
+
+      <section class="stats">
+        <article class="card">
+          <div class="stat-value" id="receptionTotal">0</div>
+          <p class="stat-label">Active Patients</p>
+        </article>
+        <article class="card">
+          <div class="stat-value" id="receptionCritical">0</div>
+          <p class="stat-label">High Priority</p>
+        </article>
+        <article class="card">
+          <div class="stat-value" id="receptionUrgent">0</div>
+          <p class="stat-label">Serious Priority</p>
+        </article>
+        <article class="card">
+          <div class="stat-value" id="receptionStable">0</div>
+          <p class="stat-label">Stable Patients</p>
+        </article>
+      </section>
+
+      <section class="nav-grid" style="margin-bottom:24px;">
+        <a class="nav-card" href="kiosk.html">
+          <div class="nav-title">Patient Intake Kiosk</div>
+          <p class="subtitle">Scan an RFID, auto-fill vitals, and let the patient add symptoms.</p>
+        </a>
+        <a class="nav-card" href="dashboard.html">
+          <div class="nav-title">Admin Dashboard</div>
+          <p class="subtitle">Search records, review patients, and manually override status.</p>
+        </a>
+        <a class="nav-card" href="handheld.html">
+          <div class="nav-title">Handheld Field Monitor</div>
+          <p class="subtitle">See only serious and high-priority cases in the portable view.</p>
+        </a>
+      </section>
+
+      <section class="grid two-up" style="margin-bottom:24px;">
+        <article class="card">
+          <div class="panel-header">
+            <div>
+              <h2 class="panel-title">Triage Logic Snapshot</h2>
+              <p class="panel-meta">Moved here so the kiosk stays patient-friendly</p>
+            </div>
+          </div>
+          <div class="list">
+            <div class="patient-card critical">
+              <h3>High Priority</h3>
+              <p class="subtitle">Critical if BPM is above 110 or symptoms include chest pain or breathing issues.</p>
+            </div>
+            <div class="patient-card urgent">
+              <h3>Serious Priority</h3>
+              <p class="subtitle">Urgent if BPM is above 95 or dizziness is reported without critical flags.</p>
+            </div>
+            <div class="patient-card">
+              <h3>Observe / Stable</h3>
+              <p class="subtitle">Symptoms-only cases remain on desktop monitoring unless escalation signs appear.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="panel-header">
+            <div>
+              <h2 class="panel-title">Demo Notes</h2>
+              <p class="panel-meta">How to show the shared-data flow</p>
+            </div>
+          </div>
+          <div class="list">
+            <div class="patient-card">
+              <h3>1. Load Demo Patients</h3>
+              <p class="subtitle">Seeds fictional records so every page has realistic information immediately.</p>
+            </div>
+            <div class="patient-card">
+              <h3>2. Randomize Live Vitals</h3>
+              <p class="subtitle">Changes BPM, O2, and risk levels to prove the desktop and handheld views stay synced.</p>
+            </div>
+            <div class="patient-card">
+              <h3>3. Open Patient Page</h3>
+              <p class="subtitle">Click any queue row to launch the detailed patient record with animated vitals.</p>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="queue-layout">
+        <div class="card stack">
+          <div class="panel-header">
+            <div>
+              <h2 class="panel-title">Reception Queue</h2>
+              <p class="panel-meta">Click a patient to open their full record page.</p>
+            </div>
+            <div id="lastUpdated" class="panel-meta">Waiting for sync...</div>
+          </div>
+          <div id="receptionQueue" class="queue-list">
+            <div class="patient-card">
+              <h3>Awaiting Firebase connection...</h3>
+              <p class="subtitle">Live patient queue items will appear here.</p>
+            </div>
+          </div>
+        </div>
+
+        <aside class="card detail-panel">
+          <div class="panel-header">
+            <div>
+              <h2 class="panel-title">Record Launch</h2>
+              <p class="panel-meta">Profiles open in a dedicated patient page</p>
+            </div>
+          </div>
+          <div class="detail-empty">
+            Click any patient in the reception queue to open a focused record page with animated heart rate, O2 saturation, risk summary, and symptoms.
+          </div>
+        </aside>
+      </section>
+    </main>
+
+    <script src="config.js"></script>
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
