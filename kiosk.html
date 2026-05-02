@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediBand Patient Survey</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body data-view="kiosk">
+    <main class="app-shell">
+      <section class="toolbar" style="margin-bottom:24px;">
+        <div class="hero" style="margin-bottom:0;">
+          <p class="eyebrow">Patient Survey</p>
+          <h1>Self-Service Health Survey</h1>
+          <p class="subtitle">
+            Opened from a MediBand wristband scan or shared phone link to auto-fill identity and live vitals, then let the patient report symptoms.
+          </p>
+        </div>
+        <div class="toolbar-actions">
+          <button id="themeToggle" class="button ghost" type="button">Toggle Light Mode</button>
+        </div>
+      </section>
+
+      <section class="grid">
+        <article class="card">
+          <h2>Survey Intake</h2>
+          <p class="subtitle" style="margin-top:8px; margin-bottom:18px;">
+            RFID scan pulls in the patient profile and live vitals before symptoms are submitted.
+          </p>
+
+          <form id="intakeForm" class="form-grid">
+            <label class="mobile-stack">
+              <span>RFID Scan</span>
+              <div class="toolbar-actions">
+                <input id="rfidInput" class="input" type="number" name="rfid" inputmode="numeric" min="1" step="1" required placeholder="Example: 10492">
+                <button id="demoScanButton" class="button ghost" type="button">Scan</button>
+                <button id="lookupRfidButton" class="button secondary" type="button">Load Wristband</button>
+              </div>
+            </label>
+
+            <label class="mobile-stack">
+              <span>Patient Name</span>
+              <input id="nameInput" class="input" type="text" name="name" maxlength="80" readonly placeholder="Auto-filled after RFID scan">
+            </label>
+
+            <label class="mobile-stack">
+              <span>Live BPM</span>
+              <input id="bpmInput" class="input" type="number" name="bpm" inputmode="numeric" min="30" max="240" step="1" readonly placeholder="Auto-filled after RFID scan">
+            </label>
+
+            <label class="mobile-stack">
+              <span>O2 Saturation (%)</span>
+              <input id="spo2Input" class="input" type="number" name="spo2" inputmode="numeric" min="70" max="100" step="1" readonly placeholder="Auto-filled after RFID scan">
+            </label>
+
+            <label class="mobile-stack">
+              <span>Blood Pressure (Systolic)</span>
+              <input id="bloodPressureInput" class="input" type="number" name="bloodPressure" inputmode="numeric" min="60" max="240" step="1" readonly placeholder="Auto-filled after RFID scan">
+            </label>
+
+            <div class="mobile-stack">
+              <span>Symptoms Checklist</span>
+              <div id="symptomChecklist" class="symptom-grid"></div>
+            </div>
+
+            <label id="otherSymptomWrap" class="mobile-stack" hidden>
+              <span>Other Symptom</span>
+              <input id="otherSymptomInput" class="input" type="text" name="otherSymptom" maxlength="80" placeholder="Describe the symptom">
+            </label>
+
+            <button class="button critical" type="submit">Submit Intake</button>
+          </form>
+
+          <p id="resultMessage" class="message">Ready for patient intake.</p>
+        </article>
+      </section>
+
+      <section class="grid" style="margin-top:20px;">
+        <aside class="card">
+          <h2>Nearby Care Options</h2>
+          <div class="list" style="margin-top:18px;">
+            <div class="patient-card">
+              <h3>Northside General Hospital</h3>
+              <p class="subtitle">Capacity: 78% occupied • Full emergency department • 12 min away</p>
+              <p style="margin-top:12px;">
+                <a class="button secondary patient-link" href="https://maps.google.com/?q=Northside+General+Hospital" target="_blank" rel="noreferrer">Open in Maps</a>
+              </p>
+            </div>
+            <div class="patient-card">
+              <h3>Westlake Urgent Care</h3>
+              <p class="subtitle">Capacity: 41% occupied • Walk-in care center • 8 min away</p>
+              <p style="margin-top:12px;">
+                <a class="button secondary patient-link" href="https://maps.google.com/?q=Westlake+Urgent+Care" target="_blank" rel="noreferrer">Open in Maps</a>
+              </p>
+            </div>
+            <div class="patient-card">
+              <h3>Riverside Community Clinic</h3>
+              <p class="subtitle">Capacity: 63% occupied • Community care center • 15 min away</p>
+              <p style="margin-top:12px;">
+                <a class="button secondary patient-link" href="https://maps.google.com/?q=Riverside+Community+Clinic" target="_blank" rel="noreferrer">Open in Maps</a>
+              </p>
+            </div>
+          </div>
+        </aside>
+      </section>
+    </main>
+
+    <script src="config.js"></script>
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
